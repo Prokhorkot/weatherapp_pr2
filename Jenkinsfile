@@ -28,7 +28,7 @@ pipeline {
             steps {
                 script {
                     // Запуск скрипта с использованием переменной окружения
-                    sh 'python3 get_weather.py'
+                    sh 'python3 weatherapp.py'
                 }
             }
         }
