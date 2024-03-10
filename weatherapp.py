@@ -22,4 +22,5 @@ def get_weather():
         file.write(report)
 
 if __name__ == "__main__":
+    print("Script started")
     get_weather()
