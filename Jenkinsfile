@@ -2,8 +2,6 @@ pipeline {
     agent any
 
     environment {
-        // Здесь Jenkins будет использовать значение переменной окружения,
-        // которое должно быть предварительно задано в Jenkins
         WEATHER_API_KEY = credentials('WEATHER_API_KEY')
     }
 
@@ -27,7 +25,6 @@ pipeline {
         stage('Get Weather') {
             steps {
                 script {
-                    // Запуск скрипта с использованием переменной окружения
                     sh 'python3 weatherapp.py'
                 }
             }
@@ -35,7 +32,6 @@ pipeline {
 
         stage('Archive') {
             steps {
-                // Архивация файла weather_report.txt
                 archiveArtifacts artifacts: 'weather_report.txt', onlyIfSuccessful: true
             }
         }

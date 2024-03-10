@@ -16,11 +16,9 @@ def get_weather():
     else:
         report = "Ошибка при получении данных о погоде"
 
-    print(report)
     # Запись отчета в файл
     with open('weather_report.txt', 'w') as file:
         file.write(report)
 
 if __name__ == "__main__":
-    print("Script started")
     get_weather()
