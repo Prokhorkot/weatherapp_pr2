@@ -4,7 +4,7 @@ pipeline {
     environment {
         // Здесь Jenkins будет использовать значение переменной окружения,
         // которое должно быть предварительно задано в Jenkins
-        WEATHER_API_KEY = credentials('c8c99a2b3b51bb7216ddf390de4be55b')
+        WEATHER_API_KEY = credentials('WEATHER_API_KEY')
     }
 
     stages {
