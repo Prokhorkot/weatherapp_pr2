@@ -7,6 +7,7 @@ pipeline {
 
     environment {
         WEATHER_API_KEY = credentials('WEATHER_API_KEY')
+        GOCACHE = '/tmp/go-cache'
     }
 
     stages {
