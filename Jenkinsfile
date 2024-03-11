@@ -32,7 +32,7 @@ pipeline {
 
         stage('Archive') {
             steps {
-                archiveArtifacts artifacts: 'weather_report.txt', onlyIfSuccessful: true
+                archiveArtifacts artifacts: 'weatherapp.py', onlyIfSuccessful: true
             }
         }
     }
