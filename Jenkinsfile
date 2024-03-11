@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'golang:latest'
+        }
+    }
 
     environment {
         WEATHER_API_KEY = credentials('WEATHER_API_KEY')
@@ -12,11 +16,16 @@ pipeline {
             }
         }
 
+        stage('Test') {
+            steps {
+                sh 'go version'
+                sh 'go test ./...'
+            }
+        }
+
         stage('Build') {
             steps {
-                sh '''
-                go build -o weatherapp
-                '''
+                sh 'go build -o weatherapp'
             }
         }
 
