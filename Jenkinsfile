@@ -12,37 +12,27 @@ pipeline {
             }
         }
 
-        stage('Setup') {
+        stage('Build') {
             steps {
                 sh '''
-                python3 -m venv venv
-                . venv/bin/activate
-                pip install -r requirements.txt
+                go build -o weatherapp
                 '''
             }
         }
 
-        stage('Get Weather') {
+        stage('Archive Binary') {
             steps {
-                script {
-                    sh 'python3 weatherapp.py'
-                }
-            }
-        }
-
-        stage('Archive') {
-            steps {
-                archiveArtifacts artifacts: 'weatherapp.py', onlyIfSuccessful: true
+                archiveArtifacts artifacts: 'weatherapp', onlyIfSuccessful: true
             }
         }
     }
 
     post {
         success {
-            echo 'Погодный отчет успешно создан.'
+            echo 'Бинарный файл успешно создан и архивирован.'
         }
         failure {
-            echo 'Не удалось создать погодный отчет.'
+            echo 'Не удалось создать или архивировать бинарный файл.'
         }
     }
 }
